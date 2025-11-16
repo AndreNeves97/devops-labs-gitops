@@ -1,0 +1,16 @@
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- frontend/deploy.yml
+- frontend/service.yml
+- backend/deploy.yml
+- backend/service.yml
+- ingress.yml
+- argocd/application.yml
+  
+
+images:
+- name: 042786454503.dkr.ecr.us-east-1.amazonaws.com/application/backend
+  newName: 042786454503.dkr.ecr.us-east-1.amazonaws.com/application/backend
+  newTag: 371abaa03db8f1edf34ac5eb50d02215b53cf75f

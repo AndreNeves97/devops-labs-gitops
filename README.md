@@ -1,5 +1,25 @@
 # ArgoCD Application Bootstrap Guide
 
+## About This Repository
+
+This is the **GitOps repository** for the DevOps Labs project. It contains Kubernetes manifests that are automatically synchronized to your cluster via ArgoCD.
+
+### Source Repository
+
+The application source code, Terraform infrastructure, and CI/CD pipelines are located in the main repository:
+- **Source Repository**: [devops-labs](https://github.com/AndreNeves97/devops-labs)
+
+### How GitOps Works
+
+This repository follows the GitOps methodology:
+
+1. **Application Changes**: When code changes are pushed to the `main` branch of the [source repository](https://github.com/AndreNeves97/devops-labs), the CI/CD pipeline is triggered
+2. **Image Build & Push**: The pipeline builds Docker images and pushes them to Amazon ECR with commit SHA tags
+3. **Manifest Update**: The pipeline automatically updates the Kustomize manifests in this GitOps repository with the new image tags
+4. **ArgoCD Sync**: ArgoCD detects the changes and automatically syncs the new image versions to your Kubernetes cluster
+
+For more details about the infrastructure setup, Terraform configuration, and CI/CD pipeline workflow, please refer to the [source repository README](https://github.com/AndreNeves97/devops-labs).
+
 ## Prerequisites
 
 1. **ArgoCD must be installed** in your Kubernetes cluster
@@ -32,7 +52,7 @@ kubectl apply -f devops-labs/argocd/application.yml
 ## Step 3: Access the application
 
 ```bash
-kubectl port-forward service/backend 3000:3000
+kubectl port-forward service/backend 3000:80
 kubectl port-forward service/frontend 8081:80
 ```
 
@@ -84,6 +104,15 @@ Or use ArgoCD CLI:
 
 ```bash
 argocd app sync devops-labs
+
+# List ArgoCD applications
+argocd app list
+
+# Sync a specific application
+argocd app sync <app-name>
+
+# Get application status
+argocd app get <app-name>
 ```
 
 ## Troubleshooting

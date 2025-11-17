@@ -16,4 +16,4 @@ images:
   newTag: 371abaa03db8f1edf34ac5eb50d02215b53cf75f
 - name: 042786454503.dkr.ecr.us-east-1.amazonaws.com/application/frontend
   newName: 042786454503.dkr.ecr.us-east-1.amazonaws.com/application/frontend
-  newTag: 16dfe78c2afd94bdd7afcdf9bb7bba276cc02073
+  newTag: 4082a53b9047d10ebb30bbffb2f1fada60593883

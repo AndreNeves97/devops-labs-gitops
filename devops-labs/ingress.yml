@@ -5,7 +5,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/load-balancer-name: devops-labs-alb
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: subnet-06242f74aa17f891b,subnet-0341636ecbc5840bb
+    alb.ingress.kubernetes.io/subnets: subnet-012e2e1c02674cd61,subnet-0b7b0dc07d79a9b29
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 spec:
   ingressClassName: alb
